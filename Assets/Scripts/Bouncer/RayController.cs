@@ -18,6 +18,7 @@ public class RayController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 var point = rayInfo.point;
+                point.y = _actor.transform.localScale.y;
                 _actor.StartMove(point);
             }
         }

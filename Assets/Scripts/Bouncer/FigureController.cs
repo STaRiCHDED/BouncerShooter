@@ -15,13 +15,15 @@ public class FigureController : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
+        var collisionObject = collision.gameObject.GetComponent<Renderer>();
+        var current = gameObject.GetComponent<Renderer>();
         if (collision.gameObject.CompareTag("Sandbox") || collision.gameObject.CompareTag("Enemy"))
         {
             return;
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.GetComponent<Renderer>().material.color == gameObject.GetComponent<Renderer>().material.color)
+            if (collisionObject.material.color == current.material.color)
             {
                 Destroy(gameObject);
                 _figureSpawner.SpawnEnemy();

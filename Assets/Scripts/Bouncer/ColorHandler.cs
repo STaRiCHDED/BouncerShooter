@@ -21,17 +21,9 @@ public class ColorHandler : MonoBehaviour
         var elem = Random.Range(0, _colors.Length);
         return _colors[elem].color;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    public void ChangeColor()
     {
-        if (collision.gameObject.CompareTag("Sandbox") || gameObject.CompareTag("Enemy"))
-        {
-            return;
-        }
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            if (collision.gameObject.GetComponent<Renderer>().material.color == gameObject.GetComponent<Renderer>().material.color)
-                _currentRenderer.material.color = GenerateNewColor();
-        }
+        _currentRenderer.material.color = GenerateNewColor();
     }
+    
 }
